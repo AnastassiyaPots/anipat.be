@@ -4,14 +4,6 @@
 
 @section('content')
 
-<figure class="text-end mt-4 mx-3">
-    <blockquote class="blockquote">
-        <p>Ваши питомцы не останутся равнодушными</p>
-    </blockquote>
-    <figcaption class="blockquote-footer">
-        Только бережное <cite title="Source Title"> отношение.</cite>
-    </figcaption>
-</figure> 
 
 <main>
 

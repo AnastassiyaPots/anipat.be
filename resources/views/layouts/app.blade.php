@@ -69,9 +69,13 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
+                    @if(Auth::check() && Auth::user()->isAdmin())
+                        <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-success" aria-current= "page">Перейти на админскую панель</a>
+                    @endif
                     @auth
-                        <a href="{{ route('order.index') }}" class="btn btn-outline-success" aria-current="page">Оставить заявку</a>
+                      <a href="{{ route('order.index') }}" class="btn btn-outline-success" aria-current="page">Оставить заявку</a>
                     @endauth
+                    
                     </li>
                 </ul>
                 <div class="d-flex">
@@ -96,11 +100,16 @@
      
     <!-- не выскакивает в самом начале, выскакивает в конце? -->
     @if (session('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success mt-4">
             {{ session('success') }}
         </div>  
     @endif
     
+    @if ($errors->any())
+      @foreach($errors->all() as $error)
+        <div class="alert alert-danger mt-4">{{ $error }}</div>
+      @endforeach
+    @endif
 
     @yield('content')
     

@@ -1,15 +1,24 @@
 @extends('layouts.app')
 
-@section('title', 'Оформить услугу')
+@section('title', 'Создание новой записи')
 
 @section('content')
 
-<a href="{{ route('home') }}" class="btn btn-success mt-5 mx-2"> Вернуться назад </a>
+<a href="{{ route('admin.registers.index') }}" class="btn btn-success mt-5 mx-2"> Вернуться назад </a>
 
 <div class="container mt-5">
-        <h1>Заказать услугу</h1>
+        <h1>Создать новую запись услуги</h1>
         <form method="POST" action="{{ route('order.store') }}" class="row g-3">
             @csrf
+            <div class="col-md-12">
+                <label for="user" class="form-label">Имя пользователя:</label>
+                <select name="user" id="user" class="form-select">
+                    <option value="">Выберите имя пользователя</option>
+                    @foreach ($users as $user)
+                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="col-md-12">
                 <label for="service" class="form-label">Выберите услугу:</label>
                 <select name="service" id="service" class="form-select">
